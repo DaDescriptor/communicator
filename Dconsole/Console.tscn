@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dscskernxtv62"]
+
+[ext_resource type="Theme" uid="uid://bposr27pi0igx" path="res://theme.tres" id="2_pegn1"]
+[ext_resource type="PackedScene" uid="uid://djne12sgkk4iv" path="res://Dconsole/output.tscn" id="2_pgn4m"]
+
+[node name="Console" type="Panel"]
+self_modulate = Color(1, 1, 1, 0.619608)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Command" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 32)
+vertical_scroll_mode = 0
+
+[node name="LineEdit" type="LineEdit" parent="Command"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_pegn1")
+text = "amogus "
+expand_to_text_length = true
+caret_blink = true
+
+[node name="Send" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_pegn1")
+text = "Send"
+
+[node name="Output" type="ScrollContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -48.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Output"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" parent="Output/VBoxContainer" instance=ExtResource("2_pgn4m")]
+layout_mode = 2
