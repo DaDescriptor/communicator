@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dscskernxtv62"]
+[gd_scene load_steps=3 format=3 uid="uid://dscskernxtv62"]
 
+[ext_resource type="Script" path="res://Dconsole/Console.gd" id="1_fwjhb"]
 [ext_resource type="Theme" uid="uid://bposr27pi0igx" path="res://theme.tres" id="2_pegn1"]
 
 [node name="Console" type="Panel"]
@@ -13,6 +14,7 @@ offset_right = -25.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fwjhb")
 
 [node name="Command" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(0, 32)
