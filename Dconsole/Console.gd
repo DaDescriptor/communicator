@@ -26,11 +26,14 @@ func _get_args(text: String) -> Array:
 		if letter == " " and !isString:
 			result.append(buffer)
 			buffer = ""
-		elif letter == "\"" and buffer[buffer.length() - 2]!="\\":
-			# toggle isString if processed character is unescaped "
+		elif letter == "\"" and (buffer.length() > 1 and buffer[buffer.length()-2]):
+			# toggle isString if processed character is unescaped double quote
 			isString = !isString
 		else:
 			buffer = buffer+letter
+	
+	if buffer != "":
+		result.append(buffer)
 	
 	if isString:
 		output("Error parsing command: doublequotes are not closed.")
@@ -43,12 +46,11 @@ func output(text: String):
 	outputContainer.add_child(textInstance)
 	textInstance.text = text # write text passed in
 
-func _send():
-	var input = inputLine.text
+func _send(input: String = inputLine.text):
 	output(">>> "+input) # log command written by user
 	
 	var args = _get_args(input).duplicate()
-	args.remove_at(0)
+	args.remove_at(0) # remove the command from argument list
 	
 	on_send.emit(
 		_get_args(input)[0], # command
